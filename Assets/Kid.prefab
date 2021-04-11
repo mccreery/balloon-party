@@ -311,15 +311,15 @@ MonoBehaviour:
   - {fileID: -5568477639291326879, guid: ebad439ee4a3bae4a9c37de5e154c070, type: 3}
   head: {fileID: 641327752792763955}
   body: {fileID: 6543359620847397526}
-  standStillMean: 8
-  standStillVariance: 3
+  standStillMean: 3
+  standStillVariance: 2
   walkableArea:
     serializedVersion: 2
     x: -6
     y: -3
     width: 11
     height: 3
-  walkSpeed: 1
+  walkSpeed: 3.5
   requests:
   - {fileID: -8163456380366186014, guid: 10eda37ce22274b4d91ace6813317d8a, type: 3}
   - {fileID: -2841503711509217321, guid: 10eda37ce22274b4d91ace6813317d8a, type: 3}
@@ -327,12 +327,12 @@ MonoBehaviour:
   - {fileID: 3666911780956764071, guid: 10eda37ce22274b4d91ace6813317d8a, type: 3}
   requestBubble: {fileID: 8022120735538715627}
   requestSprite: {fileID: 7677212001587704084}
-  requestMean: 20
-  requestVariance: 15
+  requestMean: 7
+  requestVariance: 7
   happyEmote: {fileID: -2218532171948781032, guid: 10eda37ce22274b4d91ace6813317d8a, type: 3}
   sadEmote: {fileID: 6435780868753077371, guid: 10eda37ce22274b4d91ace6813317d8a, type: 3}
   showEmoteTime: 5
-  ReqIndex: 0
+  averageForgetTime: 3
 --- !u!58 &1245696638561914658
 CircleCollider2D:
   m_ObjectHideFlags: 0

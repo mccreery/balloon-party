@@ -79,7 +79,10 @@ public class Kid : MonoBehaviour
         currentCoroutine = null;
     }
 
-    public int ReqIndex;
+    public int ReqIndex { get; private set; }
+
+    private float forgetTime;
+    public float averageForgetTime;
 
     private void Update()
     {
@@ -106,6 +109,15 @@ public class Kid : MonoBehaviour
 
             ReqIndex = Random.Range(0, requests.Length);
             requestSprite.sprite = requests[ReqIndex];
+
+            forgetTime = Time.time + averageForgetTime;
+        }
+
+        if (Requested && Time.time > forgetTime)
+        {
+            Requested = false;
+            requestBubble.SetActive(false);
+            PlanNextRequest();
         }
     }
 
