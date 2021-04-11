@@ -15,12 +15,13 @@ public class Pause : MonoBehaviour
         if (Input.GetButtonDown(pauseButton))
         {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
-            Time.timeScale = pauseMenu.activeSelf ? 1 : 0;
+            Time.timeScale = pauseMenu.activeSelf ? 0.0f : 1.0f;
         }
     }
 
     public void QuitToMenu()
     {
+        Time.timeScale = 1.0f;
         FindObjectOfType<GameMgr>().QuitToMenu();
     }
 }
