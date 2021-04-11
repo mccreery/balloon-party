@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Kid : MonoBehaviour
@@ -26,6 +27,8 @@ public class Kid : MonoBehaviour
 
     private float nextRequestTime;
 
+    public Sprite happyEmote;
+
     private void Start()
     {
         Sprite headSprite = heads[Random.Range(0, heads.Length)];
@@ -52,6 +55,15 @@ public class Kid : MonoBehaviour
 
     public void CompleteRequest()
     {
+        requestSprite.sprite = happyEmote;
+        StartCoroutine(DelayBubbleClose());
+    }
+
+    public float showEmoteTime;
+
+    private IEnumerator DelayBubbleClose()
+    {
+        yield return new WaitForSeconds(showEmoteTime);
         Requested = false;
         requestBubble.SetActive(false);
         PlanNextRequest();
@@ -62,6 +74,7 @@ public class Kid : MonoBehaviour
         if (target.HasValue)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.Value, walkSpeed * Time.deltaTime);
+            CorrectZ();
 
             if ((target.Value - (Vector2)transform.position).sqrMagnitude < 0.1f)
             {

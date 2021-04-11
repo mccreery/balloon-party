@@ -257,6 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1852266040882678930}
   - component: {fileID: 8741155696149895639}
+  - component: {fileID: 1245696638561914658}
   m_Layer: 0
   m_Name: Kid
   m_TagString: Untagged
@@ -272,7 +273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8461171645599729401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8705764, y: -2.22345, z: 0}
+  m_LocalPosition: {x: -2.4429033, y: -2.9327497, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4740926094418625847}
@@ -328,6 +329,24 @@ MonoBehaviour:
   requestSprite: {fileID: 7677212001587704084}
   requestMean: 20
   requestVariance: 15
+  happyEmote: {fileID: -2218532171948781032, guid: 10eda37ce22274b4d91ace6813317d8a, type: 3}
+  showEmoteTime: 5
+--- !u!58 &1245696638561914658
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8461171645599729401}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!1 &8658833747457005585
 GameObject:
   m_ObjectHideFlags: 0
