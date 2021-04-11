@@ -11,8 +11,9 @@ public class KidSpawner : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            Instantiate(kidPrefab, transform);
-            kidPrefab.transform.position = spawnArea.GetRandomPoint();
+            GameObject kid = Instantiate(kidPrefab, transform);
+            kid.transform.position = spawnArea.GetRandomPoint();
+            kid.GetComponent<Kid>().CorrectZ();
         }
     }
 }

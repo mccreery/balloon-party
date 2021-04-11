@@ -44,6 +44,12 @@ public class Kid : MonoBehaviour
 
     public bool Requested { get; private set; }
 
+    public void CorrectZ()
+    {
+        // Draw closer to bottom kids in front
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+    }
+
     public void CompleteRequest()
     {
         Requested = false;
@@ -55,13 +61,9 @@ public class Kid : MonoBehaviour
     {
         if (target.HasValue)
         {
-            Vector3 position = Vector2.MoveTowards(transform.position, target.Value, walkSpeed * Time.deltaTime);
-            // Draw closer to bottom kids in front
-            position.z = position.y;
+            transform.position = Vector2.MoveTowards(transform.position, target.Value, walkSpeed * Time.deltaTime);
 
-            transform.position = position;
-
-            if ((target.Value - (Vector2)position).sqrMagnitude < 0.1f)
+            if ((target.Value - (Vector2)transform.position).sqrMagnitude < 0.1f)
             {
                 target = null;
                 PlanNextMove();
