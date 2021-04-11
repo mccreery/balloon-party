@@ -55,18 +55,27 @@ public class Kid : MonoBehaviour
 
     public void CompleteRequest()
     {
-        requestSprite.sprite = happyEmote;
-        StartCoroutine(DelayBubbleClose());
+        if (currentCoroutine == null)
+        {
+            requestSprite.sprite = happyEmote;
+            currentCoroutine = StartCoroutine(DelayBubbleClose());
+        }
     }
+
+    private Coroutine currentCoroutine;
 
     public float showEmoteTime;
 
     private IEnumerator DelayBubbleClose()
     {
+        FindObjectOfType<Score>().score++;
+
         yield return new WaitForSeconds(showEmoteTime);
         Requested = false;
         requestBubble.SetActive(false);
         PlanNextRequest();
+
+        currentCoroutine = null;
     }
 
     private void Update()
