@@ -16,6 +16,16 @@ public class Kid : MonoBehaviour
 
     private float nextMoveTime;
 
+    public Sprite[] requests;
+
+    public GameObject requestBubble;
+    public SpriteRenderer requestSprite;
+
+    public float requestMean;
+    public float requestVariance;
+
+    private float nextRequestTime;
+
     private void Start()
     {
         Sprite headSprite = heads[Random.Range(0, heads.Length)];
@@ -25,9 +35,21 @@ public class Kid : MonoBehaviour
         body.sprite = bodySprite;
 
         PlanNextMove();
+        PlanNextRequest();
+
+        requestBubble.SetActive(false);
     }
 
     private Vector2? target;
+
+    public bool Requested { get; private set; }
+
+    public void CompleteRequest()
+    {
+        Requested = false;
+        requestBubble.SetActive(false);
+        PlanNextRequest();
+    }
 
     private void Update()
     {
@@ -49,10 +71,22 @@ public class Kid : MonoBehaviour
         {
             target = walkableArea.GetRandomPoint();
         }
+
+        if (!Requested && Time.time > nextRequestTime)
+        {
+            Requested = true;
+            requestBubble.SetActive(true);
+            requestSprite.sprite = requests[Random.Range(0, requests.Length)];
+        }
     }
 
     private void PlanNextMove()
     {
         nextMoveTime = Time.time + standStillMean + Random.Range(-standStillVariance, standStillVariance);
+    }
+
+    private void PlanNextRequest()
+    {
+        nextRequestTime = Time.time + requestMean + Random.Range(-requestVariance, requestVariance);
     }
 }

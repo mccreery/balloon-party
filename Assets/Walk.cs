@@ -9,7 +9,7 @@ public class Walk : MonoBehaviour
 
     private void Update()
     {
-        float horz = Input.GetAxis("Horizontal");
+        float horz = Input.GetAxisRaw("Horizontal");
 
         if (horz < 0)
         {
@@ -20,7 +20,7 @@ public class Walk : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        Vector3 walk = new Vector2(horz, Input.GetAxis("Vertical")).normalized;
+        Vector3 walk = new Vector2(horz, Input.GetAxisRaw("Vertical")).normalized;
         Vector2 position = transform.position + walk * walkSpeed * Time.deltaTime;
         position = walkableArea.Clamp(position);
 
