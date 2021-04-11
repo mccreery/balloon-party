@@ -28,6 +28,7 @@ public class Kid : MonoBehaviour
     private float nextRequestTime;
 
     public Sprite happyEmote;
+    public Sprite sadEmote;
 
     private void Start()
     {
@@ -53,12 +54,12 @@ public class Kid : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 
-    public void CompleteRequest()
+    public void CompleteRequest(bool good)
     {
         if (currentCoroutine == null)
         {
-            requestSprite.sprite = happyEmote;
-            currentCoroutine = StartCoroutine(DelayBubbleClose());
+            requestSprite.sprite = good ? happyEmote : sadEmote;
+            currentCoroutine = StartCoroutine(DelayBubbleClose(good));
         }
     }
 
@@ -66,9 +67,9 @@ public class Kid : MonoBehaviour
 
     public float showEmoteTime;
 
-    private IEnumerator DelayBubbleClose()
+    private IEnumerator DelayBubbleClose(bool good)
     {
-        FindObjectOfType<Score>().score++;
+        if (good) FindObjectOfType<Score>().score++;
 
         yield return new WaitForSeconds(showEmoteTime);
         Requested = false;
@@ -77,6 +78,8 @@ public class Kid : MonoBehaviour
 
         currentCoroutine = null;
     }
+
+    public int ReqIndex;
 
     private void Update()
     {
@@ -100,7 +103,9 @@ public class Kid : MonoBehaviour
         {
             Requested = true;
             requestBubble.SetActive(true);
-            requestSprite.sprite = requests[Random.Range(0, requests.Length)];
+
+            ReqIndex = Random.Range(0, requests.Length);
+            requestSprite.sprite = requests[ReqIndex];
         }
     }
 

@@ -31,10 +31,31 @@ public class Interact : MonoBehaviour
         Kid kid = GetKid();
         interactBubble.SetActive(kid != null);
 
-        if (kid != null && Input.GetButtonDown(button))
+        if (kid != null)
         {
-            kid.CompleteRequest();
+            int indexDown = GetIndexDown();
+            
+            if (indexDown == kid.ReqIndex)
+            {
+                kid.CompleteRequest(true);
+            }
+            else if (indexDown != -1)
+            {
+                kid.CompleteRequest(false);
+            }
         }
+    }
+
+    private int GetIndexDown()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (Input.GetButtonDown("Fire" + (i+1)))
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private Kid GetKid()

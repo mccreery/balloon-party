@@ -330,7 +330,9 @@ MonoBehaviour:
   requestMean: 20
   requestVariance: 15
   happyEmote: {fileID: -2218532171948781032, guid: 10eda37ce22274b4d91ace6813317d8a, type: 3}
+  sadEmote: {fileID: 6435780868753077371, guid: 10eda37ce22274b4d91ace6813317d8a, type: 3}
   showEmoteTime: 5
+  ReqIndex: 0
 --- !u!58 &1245696638561914658
 CircleCollider2D:
   m_ObjectHideFlags: 0
